@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>يوسف متزعلش مني ❤️</title>
+  <meta name="description" content="رسالة حب ومصالحة خاصة ومميزة معمولة بكل حب لـ يوسف (أبو كارما) ❤️">
+
+  <!-- الخطوط العربية الرسمية -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Marhey:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- مكتبة التنسيق والتصميم -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- مكتبة القلوب والاحتفال (Confetti) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Alexandria', 'Cairo', 'sans-serif'],
+            romantic: ['Marhey', 'Amiri', 'cursive'],
+            heading: ['Cairo', 'Alexandria', 'sans-serif'],
+            poetry: ['Amiri', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Alexandria', 'Cairo', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      background-color: #0c0107;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.4)); }
+      50% { opacity: 1; transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.8)); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    .glass-romantic {
+      background: rgba(30, 10, 20, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 114, 182, 0.25);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(225, 29, 72, 0.2);
+    }
+    @keyframes tapSparkle {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.6) translateY(0); }
+      50% { transform: translate(-50%, -50%) scale(1.3) translateY(-25px); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1) translateY(-60px); }
+    }
+    .tap-sparkle-item {
+      position: absolute;
+      pointer-events: none;
+      z-index: 9999;
+      animation: tapSparkle 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#16030c] via-[#220716] to-[#0c0107] text-slate-100 min-h-screen selection:bg-rose-500 selection:text-white overflow-x-hidden flex flex-col justify-between">
+
+  <!-- خلفية القلوب واللمعات المتحركة -->
+  <canvas id="heartCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div class="fixed top-1/6 right-1/4 w-80 h-80 rounded-full bg-rose-600/10 blur-[100px] pointer-events-none z-0 animate-pulse-glow"></div>
+  <div class="fixed bottom-1/4 left-1/5 w-96 h-96 rounded-full bg-pink-700/10 blur-[120px] pointer-events-none z-0 animate-pulse-glow"></div>
+
+  <!-- صوت الأغنية (تبدأ تلقائياً عند الضغط على زر الدخول) -->
+  <audio id="bgSong" loop preload="auto">
+    <source src="https://cdn.imageurlgenerator.com/uploads/2e88477a-d4ae-4fa2-a4d4-c11cf39a31b8.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- الشريط العلوي الثابت -->
+  <header class="fixed top-0 inset-x-0 z-50 px-3 py-2.5">
+    <div class="max-w-md mx-auto flex items-center justify-between gap-2 bg-slate-950/70 backdrop-blur-xl border border-rose-500/25 rounded-full px-3 py-1.5 shadow-lg shadow-black/50">
+      
+      <!-- اللوجو أعلى اليمين -->
+      <div class="flex items-center gap-2 cursor-pointer" onclick="goToStage(0)">
+        <div class="relative w-8 h-8 rounded-full overflow-hidden p-[1.5px] bg-gradient-to-tr from-rose-500 via-pink-400 to-amber-300 shadow-md">
+          <img src="https://i.ibb.co/R49wDCkD/1791212250798.jpg" alt="اللوجو" class="w-full h-full object-cover rounded-full bg-rose-950">
+        </div>
+        <div class="flex flex-col text-right">
+          <span class="text-[11px] font-bold text-rose-200 leading-tight flex items-center gap-1">
+            يوسف <span class="text-rose-500">❤️</span>
+          </span>
+          <span class="text-[9px] text-pink-300/70 leading-none">أبو كارما</span>
+        </div>
+      </div>
+
+      <!-- مؤشر أرقام الصفحات -->
+      <div id="pageBadge" class="hidden items-center gap-1 text-xs text-rose-200 font-medium px-2.5 py-0.5 rounded-full bg-rose-950/50 border border-rose-500/20">
+        <span class="text-[10px] text-rose-300">صفحة</span>
+        <span id="currentStageNum" class="text-[11px] font-bold text-pink-300">1</span>
+        <span class="text-[10px] text-rose-400/70">من</span>
+        <span class="text-[10px] text-rose-300/70">10</span>
+      </div>
+
+      <!-- أزرار الموسيقى والرجوع -->
+      <div class="flex items-center gap-1.5">
+        <button id="musicToggleBtn" onclick="toggleAudio()" class="hidden items-center gap-1.5 bg-black/50 px-2.5 py-1.5 rounded-full border border-pink-500/30 text-xs text-pink-200 active:scale-95 transition-all">
+          <span id="discIcon" class="inline-block text-rose-400 animate-spin" style="animation-duration: 3s;">🎵</span>
+          <span id="musicText" class="text-[10px] font-medium hidden xs:inline">أغنيتنا شغالة</span>
+        </button>
+
+        <button id="prevBtn" onclick="prevStage()" class="hidden items-center gap-0.5 text-[11px] text-pink-200 bg-white/5 hover:bg-white/10 px-2 py-1 rounded-full border border-pink-400/20 active:scale-95 transition-all">
+          <span>السابق</span>
+          <span>‹</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- جسم الصفحة الرئيسي -->
+  <main id="appContainer" class="relative z-10 flex-1 flex flex-col justify-center items-center px-4 pt-20 pb-12 w-full max-w-md mx-auto"></main>
+
+  <!-- نافذة "لسه زعلان شوية" التفاعلية -->
+  <div id="teasingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-sm rounded-3xl bg-gradient-to-b from-[#2a0818] via-[#1a0510] to-[#12020a] border border-rose-500/40 p-5 shadow-2xl text-center">
+      <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-rose-600/20 border border-rose-500/30 flex items-center justify-center text-2xl">
+        😂❤️
+      </div>
+      <h3 class="text-xl font-bold font-heading text-rose-200 mb-2">
+        طب استنى... عندي كلام تاني ليك 😂❤️
+      </h3>
+      <div id="modalStep1" class="space-y-3 text-sm text-rose-100/90 font-poetry leading-relaxed py-2">
+        <p class="bg-rose-950/40 p-2.5 rounded-xl border border-rose-500/20">
+          "طب عشان خاطر <strong class="text-pink-300 font-bold">كارما 👶🏻❤️</strong> متهونش عليك؟"
+        </p>
+        <p>طب عشان خاطري أنا؟ متهونش عليا أبدًا أشوفك شايل في قلبك مني لحظة واحدة.</p>
+        <p class="text-xs text-pink-300/80">أنا ماليش غيرك يا يوسف، وزعلك بيوجع قلبي بجد.</p>
+        <div class="pt-2 flex flex-col gap-2">
+          <button onclick="acceptForgiveFromModal()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold text-sm shadow-lg shadow-rose-900/50 active:scale-95 transition-all">
+            طب خلاص.. قلبي رق وسامحتك يا ستي ❤️
+          </button>
+          <button onclick="showBribeOptions()" class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-rose-200 text-xs font-semibold border border-rose-500/20 transition-all">
+            طب هتراضيني بإيه الأول؟ 😉
+          </button>
+        </div>
+      </div>
+      <div id="modalStep2" class="hidden space-y-3 text-sm text-rose-100/90 leading-relaxed py-2">
+        <p class="text-xs text-pink-300 font-semibold mb-2">عرض الصلح الحصري لـ أبو كارما:</p>
+        <div class="text-right space-y-2 text-xs font-medium bg-rose-950/50 p-3 rounded-xl border border-rose-500/20">
+          <div>🍲 أكلة حلوة بتحبها معمولة مخصوص عشانك</div>
+          <div>☕ فنجان قهوة بمزاج وكلمتين حلوين من القلب</div>
+          <div>🤞🏻❤️ وعد صريح مفيش عند ولا نكد تاني خلاص</div>
+        </div>
+        <button onclick="acceptForgiveFromModal()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold text-sm shadow-lg shadow-rose-900/50 active:scale-95 transition-all mt-2">
+          كده مفيش كلام.. صفينا وسامحتك ❤️
+        </button>
+      </div>
+      <button onclick="closeTeasingModal()" class="mt-3 text-[11px] text-pink-300/60 hover:text-pink-200">إغلاق</button>
+    </div>
+  </div>
+
+  <footer class="relative z-10 py-3 text-center text-[11px] text-rose-300/40 font-poetry">
+    معمول بكل حب مخصوص عشان يوسف ❤️ أبو كارما
+  </footer>
+
+  <script>
+    const pages = [
+      { id: 0, type: 'splash' },
+      {
+        id: 1,
+        badge: 'رسالة خاصة جداً ❤️',
+        title: 'استنى يا يوسف ❤️',
+        subtitle: 'قبل ما تقفل أو تحكم، اسمع صوت قلبي',
+        paragraphs: [
+          'يوسف، أنا عارفة إنك زعلان مني، وعارفة إن مجرد إني أقولك متزعلش مش كفاية، بس أنا بجد مش عايزة أشوفك زعلان بسببي.',
+          'أنا آسفة على أي حاجة ضايقتك مني، سواء كنت واخدة بالي منها أو لأ.',
+          'يمكن أنا غلطت، ويمكن طريقتي كانت غلط، بس صدقني عمري ما كان قصدي أوجعك أو أخليك تحس إنك مش مهم عندي.',
+          'أنا مش داخلة الموقع ده عشان أقول كلمتين وخلاص، أنا داخلاه عشان أقولك إن زعلك فارق معايا، وإنك فارق معايا، وإن آخر حاجة أتمنى أشوفها إنك تكون زعلان مني.'
+        ],
+        highlight: 'حقك عليا يا يوسف ❤️',
+        btnText: 'اسمعني للآخر يا يوسف ❤️'
+      },
+      {
+        id: 2,
+        badge: 'من أعماق قلبي 🥺',
+        title: 'حقك عليا ❤️',
+        subtitle: 'اعتذار صادق مفيش فيه أي مبررات',
+        paragraphs: [
+          'حقك عليا يا يوسف...',
+          'لو كلمة مني زعلتك، حقك عليا.',
+          'لو تصرف مني وجعك، حقك عليا.',
+          'لو حسيت في لحظة إني مش مقدرة وجودك، حقك عليا.',
+          'ولو خليتك تحس إنك لوحدك وإنت محتاجني، حقك عليا ألف مرة.',
+          'أنا مش بدور على مبرر لغلطي، أنا بس عايزة أصلح اللي حصل بينا.',
+          'مفيش عندي أهم من إننا نرجع نتكلم ونضحك ونبقى كويسين تاني.'
+        ],
+        highlight: 'متخليش زعل صغير يهدم حاجة حلوة بينا يا يوسف ❤️',
+        btnText: 'كمل معايا يا حبيبي ❤️'
+      },
+      {
+        id: 3,
+        badge: 'مكانتك الخاصة 💎',
+        title: 'يوسف أنت غالي ❤️',
+        subtitle: 'محدش يقدر ياخد مكانك ولا يعوض وجودك',
+        paragraphs: [
+          'يوسف، يمكن أنا مش بعرف أقول كل اللي جوايا بطريقة صح، بس ده مش معناه إنك مش غالي عندي.',
+          'إنت شخص وجوده في حياتي فرق معايا بجد.',
+          'بحب كلامك، ضحكتك، طريقتك، اهتمامك، وحتى الحاجات الصغيرة اللي يمكن أنت نفسك مش واخد بالك منها.',
+          'وعشان كده زعلك مني بيوجعني أوي، لأن آخر شخص أتمنى أكون سبب في زعله هو إنت.'
+        ],
+        highlight: 'بحب إنك يوسف... مش نسخة من حد، ومش شبه حد ❤️',
+        btnText: 'في حاجة تانية عايزة أقولها ❤️'
+      },
+      {
+        id: 4,
+        type: 'karma',
+        badge: 'حكايتنا الحلوة 👶🏻❤️',
+        title: 'يوسف... أبو كارما ❤️',
+        subtitle: 'أجمل لقب وأحلى حلم بنبنيه سوا',
+        paragraphs: [
+          'عارف يا يوسف؟ حتى اسم كارما ليه مكان خاص في الحكاية دي ❤️',
+          'يوسف وحبيبته وكارما... اسمين بينهم حكاية حب حقيقية، وفي وسط الحكاية دي في حاجات حلوة كتير تستاهل إنها تكمل وتكبر.',
+          'فـ عشان كارما 👶🏻، وعشاني، وعشان كل لحظة حلوة وضحكة شاركناها مع بعض...',
+          'خلينا نعدي الزعل ده، ونرميه ورا ضهرنا.'
+        ],
+        highlight: 'أنا مش عايزة أكسب خناقة وأخسر يوسف ❤️',
+        btnText: 'فاكر اللي كان بينا؟ ❤️'
+      },
+      {
+        id: 5,
+        type: 'photo1',
+        badge: 'أحلى ذكرياتنا 📸',
+        title: 'فاكر الحلو؟ ❤️',
+        subtitle: 'أجمل أيام عشناها مع بعض ومستحيل تتنسى',
+        imgUrl: 'https://i.ibb.co/fdhbmp55/IMG-20261005-WA0014.jpg',
+        imgCaption: 'ضحكتك وسعادتك بالدنيا يا يوسف ❤️',
+        paragraphs: [
+          'فاكر ضحكتنا؟ فاكر كلامنا؟ فاكر المرات اللي كنا بنتكلم فيها بالساعات ومنحسش بالوقت؟',
+          'فاكر لما كان مجرد وجودنا مع بعض كفاية يخلي اليوم كله أحلى وأهدى؟',
+          'أنا مش عايزة كل ده يضيع بسبب لحظة زعل أو سوء تفاهم عابر.',
+          'العلاقات الحلوة مش معناها إن عمرها ما يحصل فيها زعل...',
+          'الحب الحقيقي إن لما نزعل من بعض، نرجع لبعض ونتمسك ببعض أكتر.'
+        ],
+        highlight: 'وأنا النهارده باختارك يا يوسف ❤️ وباختار إننا نتصالح',
+        btnText: 'لسه مخلصتش كلامي ❤️'
+      },
+      {
+        id: 6,
+        badge: 'أكتر من مجرد كلمة 💫',
+        title: 'مش مجرد بحبك',
+        subtitle: 'المشاعر اللي جوايا أكبر بكتير من الحروف',
+        paragraphs: [
+          'أنا مش عايزة أقولك بحبك وخلاص زي أي كلمة بتتقال.',
+          'عايزة أقولك إني بخاف على زعلك زي روحي. بفرح لما أشوفك مبسوط ومرتاح، وبزعل أوي لما أعرف إنك متضايق بسببي.',
+          'وبهمني من كل قلبي إنك تحس إن ليك مكانة كبيرة ومحفوظة عندي.',
+          'الحب مش كلمة بتتقال... الحب اهتمام، وخوف، واحتواء، واعتذار لما نغلط، ومحاولة حقيقية إننا نصلح اللي اتكسر.'
+        ],
+        highlight: 'وأنا بحاول أصلح يا يوسف بكل ما فيا ❤️',
+        btnText: 'افتح الرسالة دي ❤️'
+      },
+      {
+        id: 7,
+        type: 'photo2',
+        badge: 'لحبيبي وسندي 💌',
+        title: 'رسالة من قلبي ❤️',
+        subtitle: 'أصدق مشاعر كتبتها ليك إنت مخصوص',
+        imgUrl: 'https://i.ibb.co/8g5JXytT/IMG-20261005-WA0013.jpg',
+        imgCaption: 'معاك وبوجودك الدنيا أحلى بكتير ❤️',
+        paragraphs: [
+          'لحبيبي ❤️',
+          'عايزة أقولك إنك من أحلى الحاجات اللي حصلتلي في عمري كله.',
+          'من يوم ما دخلت حياتي، بقى في حاجات كتير ليها معنى مختلف وطعم تاني خالص.',
+          'صوتك بيفرق.. كلامك بيفرق.. وجودك بيفرق.. حتى زعلك بيفرق وبيوجعني.',
+          'إنت مش مجرد حبيبي... إنت صاحبي وسندي والشخص الوحيد اللي بحب أشاركه تفاصيل يومي الصغيرة قبل الكبيرة.',
+          'بحب طريقتك وكلامك وضحكتك وكل تفصيلة فيك.',
+          'وربنا يخليك ليا، وميحرمنيش منك أبدًا، ونفضل دايمًا نعرف نرجع لبعض مهما حصل بينا.'
+        ],
+        highlight: 'ربنا يديمك في حياتي يا سندي وأماني ❤️',
+        btnText: 'لسه في حب كتير ليك ❤️'
+      },
+      {
+        id: 8,
+        badge: 'سر سعادتي 🌹',
+        title: 'كلام من جوه قلبي ❤️',
+        subtitle: 'لو الزمن رجع بيا هختارك برضه',
+        paragraphs: [
+          'من يوم ما عرفتك، بقى عندي سبب أضحك من غير مناسبة.',
+          'إنت مش بس حبي... إنت راحتي النفسية.',
+          'إنت الشخص اللي وجوده لوحده بيطمن قلبي ويهدي أي خوف جوايا.',
+          'وأجمل حاجة فيك إنك يوسف... الشخص اللي قلبي اختاره ومطمئن معاه.',
+          'أنا مش عايزة حياة من غيرك، ومش عايزة كل حاجة حلوة بنيناها سوا تنتهي بسبب زعل.',
+          'نفسي نفضل نضحك مع بعض، ونتخانق ونرجع نتصالح، ونفضل فاهمين إن مهما حصل بينا، في الآخر إحنا لبعض.',
+          'أنا بحبك مش عشان أنت كامل... أنا بحبك عشان أنت أنت، وبحب كل التفاصيل الصغيرة اللي بتخليك يوسف.'
+        ],
+        highlight: 'ولو الزمن رجع بيا ألف مرة، هختارك تاني يا يوسف ❤️',
+        btnText: 'شوف كلمة السر ❤️'
+      },
+      {
+        id: 9,
+        type: 'love_cloud',
+        badge: 'نبض قلبي 💖',
+        title: 'بحبك ❤️',
+        subtitle: 'بكل اللغات وبكل الطرق اللي في الدنيا',
+        paragraphs: [
+          'كل كلمة بحبك هنا مش مجرد كلمة عادية مكتوبة على شاشة...',
+          'دي محاولة مني أخلي يوسف يعرف ويحس قد إيه هو غالي عندي وقد إيه قلبي ملكه.'
+        ],
+        highlight: 'بحبك بكل ما في الكلمة من معنى ❤️',
+        btnText: 'وعد مني ليك ❤️'
+      },
+      {
+        id: 10,
+        badge: 'عهد بيني وبينك 🤝❤️',
+        title: 'وعد مني ليك يا يوسف',
+        subtitle: 'عهد من قلبي هفضل متمسكة بيه',
+        paragraphs: [
+          'وعد مني إني أحاول أفهمك أكتر وأسمعك بهدوء.',
+          'وعد مني إني لما أغلط أعترف وأحاول أصلح على طول.',
+          'وعد مني إني ماخليش الزعل ياخد أكبر من حجمه ولا يبعدنا عن بعض.',
+          'وعد مني إني أفتكر دايمًا إن الشخص اللي قدامي مش مجرد شخص عادي...'
+        ],
+        highlight: 'ده يوسف... ومهما حصل، أتمنى إننا نعرف دايمًا نرجع لبعض ❤️',
+        btnText: 'دلوقتي دورك يا يوسف.. اضغط هنا ❤️'
+      },
+      { id: 11, type: 'choice' },
+      { id: 12, type: 'finale' }
+    ];
+
+    let currentStage = 0;
+    let audioPlaying = false;
+    const bgSong = document.getElementById('bgSong');
+
+    function renderStage() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const container = document.getElementById('appContainer');
+      const pageBadge = document.getElementById('pageBadge');
+      const prevBtn = document.getElementById('prevBtn');
+      const musicBtn = document.getElementById('musicToggleBtn');
+      const currentStageNum = document.getElementById('currentStageNum');
+
+      if (currentStage > 0 && currentStage <= 10) {
+        pageBadge.classList.remove('hidden');
+        pageBadge.classList.add('flex');
+        currentStageNum.textContent = currentStage;
+      } else {
+        pageBadge.classList.add('hidden');
+        pageBadge.classList.remove('flex');
+      }
+
+      if (currentStage > 1) {
+        prevBtn.classList.remove('hidden');
+        prevBtn.classList.add('flex');
+      } else {
+        prevBtn.classList.add('hidden');
+        prevBtn.classList.remove('flex');
+      }
+
+      if (currentStage > 0) {
+        musicBtn.classList.remove('hidden');
+        musicBtn.classList.add('flex');
+      }
+
+      const p = pages[currentStage];
+
+      if (p.type === 'splash') {
+        container.innerHTML = `
+          <div class="w-full text-center space-y-6 my-auto py-4">
+            <div class="relative mx-auto w-32 h-32 flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full bg-rose-500/25 blur-2xl animate-pulse-glow"></div>
+              <div class="relative w-28 h-28 rounded-3xl bg-gradient-to-tr from-rose-700 via-pink-600 to-rose-500 p-0.5 shadow-2xl shadow-rose-900/60 transform rotate-3">
+                <div class="w-full h-full rounded-[22px] bg-gradient-to-b from-[#250817] to-[#12020a] flex flex-col items-center justify-center gap-1">
+                  <div class="text-4xl animate-bounce">💌</div>
+                  <span class="text-[11px] font-romantic text-rose-200">يوسف وحبيبته</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-400/30">
+                ❤️ رسالة خاصة جداً ❤️
+              </span>
+              <h1 class="text-2xl sm:text-3xl font-extrabold font-heading text-rose-100 leading-snug">
+                يوسف ❤️ قبل ما تزعل مني أكتر...
+                <br>
+                <span class="text-pink-300 text-xl sm:text-2xl font-romantic">
+                  اديني دقيقة بس
+                </span>
+              </h1>
+              <p class="text-sm sm:text-base text-rose-200/90 font-medium font-poetry">
+                الموقع ده معمول مخصوص ليك يا أبو كارما ❤️
+              </p>
+            </div>
+
+            <div class="pt-4">
+              <button onclick="startExperience()" class="group relative inline-flex items-center justify-center gap-2.5 w-full max-w-xs py-4 px-6 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 text-white font-bold text-base shadow-xl shadow-rose-900/60 hover:brightness-110 active:scale-95 transition-all">
+                <span>ادخل يا يوسف ❤️</span>
+              </button>
+              <p class="mt-3 text-[11px] text-rose-300/60 flex items-center justify-center gap-1">
+                <span>🎵 شغّل الصوت واستمتع بالأغنية والرسالة</span>
+              </p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      if (p.type === 'choice') {
+        container.innerHTML = `
+          <div class="w-full space-y-4 my-auto py-2">
+            <div class="relative p-6 rounded-3xl glass-romantic text-center">
+              <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-400/30 mb-3">
+                ⚖️ القرار في إيدك
+              </span>
+              <h2 class="text-2xl font-bold font-heading text-rose-100 mb-1">
+                دلوقتي دورك يا يوسف ❤️
+              </h2>
+              <p class="text-sm font-poetry text-rose-200/90 mb-4">
+                "أنا قلت كل اللي عندي... ودلوقتي فاضل حاجة واحدة بس"
+              </p>
+
+              <div id="choiceButtons" class="space-y-4 py-2">
+                <p class="text-xs sm:text-sm text-pink-200/80 font-poetry bg-rose-950/50 p-3 rounded-2xl border border-rose-500/20">
+                  هتسامح حبيبتك وترجع الضحكة لقلوبنا؟ 🥺❤️
+                </p>
+                <div class="flex flex-col gap-3 pt-2">
+                  <button onclick="chooseForgive()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold text-base shadow-xl shadow-rose-900/60 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <span>سامحتك يا حبيبتي ❤️</span>
+                  </button>
+                  <button onclick="openTeasingModal()" class="w-full py-3 px-5 rounded-2xl bg-white/5 hover:bg-white/10 text-rose-300 text-xs sm:text-sm font-medium border border-rose-400/20 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <span>لسه زعلان شوية 😔</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="forgiveSuccess" class="hidden space-y-4 py-3">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 flex items-center justify-center text-white text-2xl shadow-xl shadow-rose-900/50">
+                  ✓
+                </div>
+                <div class="space-y-2">
+                  <h3 class="text-xl font-bold font-heading text-rose-100">
+                    كنت عارفة إن قلبك حلو ❤️🥹
+                  </h3>
+                  <p class="text-sm font-poetry text-pink-200">
+                    بحبك يا يوسف... وشكرًا إنك سامحتني ❤️
+                  </p>
+                </div>
+                <button onclick="goToStage(12)" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold text-sm shadow-xl shadow-rose-900/60 active:scale-95 transition-all mt-4">
+                  تعال نشوف النهاية الحلوة يا أبو كارما 🎁❤️
+                </button>
+              </div>
+
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      if (p.type === 'finale') {
+        confetti({ particleCount: 60, spread: 90, origin: { y: 0.6 } });
+        container.innerHTML = `
+          <div class="w-full max-w-sm mx-auto text-center py-2">
+            <div class="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-b from-[#250616]/90 via-[#18040f]/95 to-[#0f020a] border border-rose-500/40 shadow-2xl backdrop-blur-xl">
+              
+              <div class="relative mx-auto max-w-[240px] aspect-square rounded-2xl p-2 bg-gradient-to-tr from-amber-400/40 via-rose-500/50 to-pink-400/40 shadow-xl border border-rose-300/30 overflow-hidden">
+                <img src="https://i.ibb.co/8g5JXytT/IMG-20261005-WA0013.jpg" alt="يوسف وحبيبته" class="w-full h-full object-cover rounded-xl">
+              </div>
+
+              <div class="mt-4 space-y-3">
+                <div class="inline-flex items-center justify-center gap-2 px-4 py-1 rounded-full bg-rose-500/20 border border-rose-400/30">
+                  <span class="text-base font-bold font-heading text-rose-200">يوسف</span>
+                  <span class="text-rose-500 text-lg">❤️</span>
+                  <span class="text-base font-bold font-heading text-rose-200">حبيبته</span>
+                </div>
+
+                <div class="space-y-1.5 pt-1">
+                  <p class="text-sm font-semibold font-romantic text-pink-300">
+                    ومن هنا تبدأ المصالحة من جديد...
+                  </p>
+                  <p class="text-xs text-rose-200/90 font-medium">
+                    "مفيش زعل يستاهل نخسر عشانه بعض ❤️"
+                  </p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-rose-950/50 border border-rose-500/20 space-y-1 text-rose-100 font-poetry text-sm leading-relaxed">
+                  <p class="font-bold text-base text-rose-200">بحبك يا يوسف ❤️</p>
+                  <p>وحقك عليا...</p>
+                  <p class="text-pink-300 font-bold">ومتزعلش مني تاني 🥹❤️</p>
+                </div>
+
+                <div class="pt-2 pb-1">
+                  <div class="inline-block text-xs font-bold text-amber-200/90 tracking-wider px-3 py-1 rounded-full bg-amber-500/10 border border-amber-400/30">
+                    يوسف × حبيبته × كارما ❤️
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 space-y-2.5">
+                <button onclick="sendWhatsApp()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+                  <span>فرحها وابعتلها على الواتساب: "سامحتك خلاص ❤️"</span>
+                </button>
+                <button onclick="goToStage(0)" class="w-full py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-rose-300 text-xs font-medium border border-rose-500/20 transition-all">
+                  إعادة قراءة الرسالة من الأول 🔄
+                </button>
+              </div>
+
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      let extraHtml = '';
+
+      if (p.type === 'karma') {
+        extraHtml = `
+          <div class="mx-auto my-3 p-3 rounded-2xl bg-gradient-to-r from-pink-500/15 via-rose-500/20 to-amber-500/15 border border-pink-400/30 text-center">
+            <div class="flex items-center justify-center gap-2 text-base font-bold text-pink-200">
+              <span>كارما</span>
+              <span class="text-xl">👶🏻</span>
+              <span class="text-rose-400">❤️</span>
+            </div>
+            <p class="text-[11px] text-pink-300/80 mt-0.5">السر الحلو اللي بيجمع قلوبنا سوا</p>
+          </div>
+        `;
+      }
+
+      if (p.type === 'photo1') {
+        extraHtml = `
+          <div class="relative mx-auto my-4 max-w-[260px] transform -rotate-2 hover:rotate-0 transition-all duration-300">
+            <div class="bg-white/95 p-3 pb-4 rounded shadow-2xl border border-rose-100 text-center">
+              <img src="${p.imgUrl}" alt="${p.imgCaption}" class="w-full aspect-[4/5] object-cover rounded-sm">
+              <p class="mt-2.5 text-xs font-romantic font-bold text-slate-800">${p.imgCaption}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      if (p.type === 'photo2') {
+        extraHtml = `
+          <div class="relative mx-auto my-4 max-w-xs group">
+            <div class="relative bg-gradient-to-b from-rose-950/80 to-slate-950/90 p-3 rounded-2xl border border-rose-400/30 shadow-2xl">
+              <img src="${p.imgUrl}" alt="${p.imgCaption}" class="w-full aspect-[4/5] object-cover rounded-xl">
+              <p class="mt-2 text-center text-xs text-rose-200 font-romantic font-semibold">${p.imgCaption}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      if (p.type === 'love_cloud') {
+        extraHtml = `
+          <div class="flex flex-wrap justify-center items-center gap-2 py-4">
+            <span class="text-2xl font-romantic text-rose-300 px-3 py-1 bg-rose-500/20 rounded-full animate-float">بحبك يا يوسف ❤️</span>
+            <span class="text-lg font-romantic text-pink-300 px-2 py-1 bg-white/5 rounded-full">بحبك أوي ❤️</span>
+            <span class="text-xl font-romantic text-rose-200 px-3 py-1 bg-rose-500/30 rounded-full animate-float" style="animation-delay: 1s;">بحبك يا أبو كارما ❤️</span>
+            <span class="text-sm font-romantic text-pink-200 px-2 py-1 bg-white/5 rounded-full">يا أغلى ما عندي</span>
+            <span class="text-base font-romantic text-rose-300 px-2.5 py-1 bg-rose-500/10 rounded-full">بحبك في كل ثانية</span>
+            <span class="text-lg font-romantic text-pink-200 px-3 py-1 bg-rose-500/25 rounded-full animate-float" style="animation-delay: 0.5s;">بحبك للأبد ❤️</span>
+          </div>
+        `;
+      }
+
+      const paragraphsHtml = p.paragraphs.map(text => `<p class="leading-relaxed">${text}</p>`).join('');
+
+      container.innerHTML = `
+        <div class="w-full space-y-4 my-auto py-2">
+          <div class="relative p-5 sm:p-6 rounded-3xl glass-romantic shadow-2xl">
+            
+            <div class="text-center space-y-2 mb-4">
+              <span class="inline-block text-[11px] font-semibold px-3 py-1 rounded-full bg-rose-500/15 text-rose-300 border border-rose-400/20">
+                ${p.badge}
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold font-heading text-rose-100">
+                ${p.title}
+              </h2>
+              <p class="text-xs text-rose-300/80 font-poetry">
+                ${p.subtitle}
+              </p>
+            </div>
+
+            ${extraHtml}
+
+            <div class="space-y-3 text-sm sm:text-base text-rose-100/90 leading-relaxed font-poetry text-right py-1">
+              ${paragraphsHtml}
+            </div>
+
+            ${p.highlight ? `
+              <div class="mt-4 p-3.5 rounded-2xl bg-gradient-to-l from-rose-950/60 to-slate-950/60 border-r-4 border-rose-500 border border-rose-500/20 text-center sm:text-right">
+                <p class="text-xs sm:text-sm font-bold font-poetry text-pink-200 leading-relaxed">
+                  ${p.highlight}
+                </p>
+              </div>
+            ` : ''}
+
+            <div class="mt-6 pt-2">
+              <button onclick="nextStage()" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-600 to-rose-600 text-white font-bold text-sm sm:text-base shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+                <span>${p.btnText || 'التالي ❤️'}</span>
+                <span>←</span>
+              </button>
+            </div>
+
+          </div>
+          <div class="text-center text-[11px] text-rose-300/60 font-poetry">
+            <span>لسه في كلام كتير لـ يوسف ❤️</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function startExperience() {
+      currentStage = 1;
+      playAudio();
+      confetti({ particleCount: 40, spread: 70, origin: { y: 0.6 } });
+      renderStage();
+    }
+
+    function nextStage() {
+      if (currentStage < pages.length - 1) {
+        currentStage++;
+        renderStage();
+      }
+    }
+
+    function prevStage() {
+      if (currentStage > 1) {
+        currentStage--;
+        renderStage();
+      }
+    }
+
+    function goToStage(index) {
+      currentStage = index;
+      renderStage();
+    }
+
+    function chooseForgive() {
+      document.getElementById('choiceButtons').classList.add('hidden');
+      document.getElementById('forgiveSuccess').classList.remove('hidden');
+      confetti({ particleCount: 90, spread: 100, origin: { y: 0.5 } });
+    }
+
+    function openTeasingModal() {
+      document.getElementById('teasingModal').classList.remove('hidden');
+      document.getElementById('teasingModal').classList.add('flex');
+    }
+
+    function closeTeasingModal() {
+      document.getElementById('teasingModal').classList.add('hidden');
+      document.getElementById('teasingModal').classList.remove('flex');
+    }
+
+    function showBribeOptions() {
+      document.getElementById('modalStep1').classList.add('hidden');
+      document.getElementById('modalStep2').classList.remove('hidden');
+    }
+
+    function acceptForgiveFromModal() {
+      closeTeasingModal();
+      chooseForgive();
+    }
+
+    function sendWhatsApp() {
+      const msg = encodeURIComponent('يا حبيبتي، شفت الموقع والرسالة كلها ❤️.. حقك عليا إنتي كمان، وأنا سامحتك من كل قلبي.. ومفيش زعل يستاهل يبعدنا عن بعض. بحبك يا أم كارما ❤️');
+      window.open('https://wa.me/?text=' + msg, '_blank');
+    }
+
+    function playAudio() {
+      bgSong.play().then(() => {
+        audioPlaying = true;
+        document.getElementById('discIcon').classList.add('animate-spin');
+      }).catch(err => {
+        console.warn('Audio play error:', err);
+      });
+    }
+
+    function toggleAudio() {
+      if (audioPlaying) {
+        bgSong.pause();
+        audioPlaying = false;
+        document.getElementById('discIcon').classList.remove('animate-spin');
+        document.getElementById('musicText').textContent = 'شغّل الأغنية';
+      } else {
+        bgSong.play();
+        audioPlaying = true;
+        document.getElementById('discIcon').classList.add('animate-spin');
+        document.getElementById('musicText').textContent = 'أغنيتنا شغالة';
+      }
+    }
+
+    // قلوب متطايرة عند لمس الشاشة
+    window.addEventListener('click', function(e) {
+      const el = document.createElement('span');
+      el.className = 'tap-sparkle-item text-xl';
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      const emojis = ['❤️', '💖', '💕', '✨', '🥰'];
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 900);
+    });
+
+    // رسم القلوب العائمة في الخلفية
+    (function initCanvasHearts() {
+      const canvas = document.getElementById('heartCanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const chars = ['❤️', '💖', '💕', '✨'];
+      const particles = [];
+      const count = Math.min(25, Math.floor(w / 35));
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          size: Math.random() * 12 + 10,
+          speedY: -(Math.random() * 0.6 + 0.3),
+          speedX: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.4 + 0.1,
+          char: chars[Math.floor(Math.random() * chars.length)]
+        });
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          if (p.y < -30) {
+            p.y = h + 20;
+            p.x = Math.random() * w;
+          }
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.font = p.size + 'px serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(p.char, p.x, p.y);
+          ctx.restore();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    // بدء العرض
+    renderStage();
+  </script>
+</body>
+</html>
